@@ -184,7 +184,7 @@ const Index = () => {
             <span className="text-accent text-sm font-semibold tracking-wider uppercase">Our Core Services</span>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 mt-3">What We Do Together</h2>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              My clients don't just get guidance—they get <span className="text-foreground font-semibold">results: confidence, structure, 
+              My clients don't just get guidance, they get <span className="text-foreground font-semibold">results: confidence, structure, 
               and freedom to grow without burnout.</span>
             </p>
           </div>
@@ -221,7 +221,7 @@ const Index = () => {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
                 <div className="flex-1">
                   <div className="inline-block px-4 py-2 bg-accent text-accent-foreground text-sm font-bold rounded-full mb-6 shadow-md">
-                    TIER 1 - START HERE
+                    TIER 1, START HERE
                   </div>
                   <h3 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">The Clarity Session</h3>
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">

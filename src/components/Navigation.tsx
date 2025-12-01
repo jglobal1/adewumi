@@ -43,10 +43,14 @@ export const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
+                className={`text-sm font-medium transition-colors ${
                   location.pathname === link.path
-                    ? "text-accent"
-                    : "text-foreground"
+                    ? isScrolled
+                      ? "text-primary"
+                      : "text-white"
+                    : isScrolled
+                      ? "text-foreground hover:text-accent"
+                      : "text-white/80 hover:text-white"
                 }`}
               >
                 {link.name}
@@ -83,10 +87,10 @@ export const Navigation = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-base font-medium py-2 transition-colors hover:text-accent ${
+                className={`text-base font-medium py-2 transition-colors ${
                   location.pathname === link.path
                     ? "text-accent"
-                    : "text-foreground"
+                    : "text-foreground hover:text-accent"
                 }`}
               >
                 {link.name}

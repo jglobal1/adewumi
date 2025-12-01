@@ -64,12 +64,12 @@ const About = () => {
                   </p>
                   <p>
                     My approach is simple but uncommon: I bring clarity to confusion, structure to chaos, 
-                    and actionable strategy to overwhelm. I don't just teach theory—I build alongside you, 
+                    and actionable strategy to overwhelm. I don't just teach theory, I build alongside you, 
                     ensuring systems work, teams perform, and you gain the freedom you started your business to achieve.
                   </p>
                   <p>
                     Whether you're starting from an idea, stuck as a solopreneur, or struggling to lead a team 
-                    that actually delivers—I help you build what you need to grow without burning out.
+                    that actually delivers, I help you build what you need to grow without burning out.
                   </p>
                   <p className="font-semibold text-foreground">
                     I bring tools, truth, and tough conversations that shift things fast.
@@ -88,7 +88,7 @@ const About = () => {
                   <div className="absolute inset-0 bg-accent/20 rounded-2xl transform rotate-3"></div>
                   <img 
                     src={founderImage} 
-                    alt="Adewumi Adeyanju - Business Coach" 
+                    alt="Adewumi Adeyanju, Business Coach" 
                     className="relative rounded-2xl shadow-lg w-full"
                   />
                 </div>
@@ -132,7 +132,7 @@ const About = () => {
             <Card className="p-10 border-2 border-accent">
               <p className="text-xl leading-relaxed">
                 To transform how leaders think, operate, and grow by providing the clarity, 
-                systems, and strategies needed to build businesses that scale independently—giving 
+                systems, and strategies needed to build businesses that scale independently, giving
                 founders the freedom to focus on what truly matters while their teams and operations thrive.
               </p>
             </Card>

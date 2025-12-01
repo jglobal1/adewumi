@@ -292,7 +292,7 @@ const Contact = () => {
                 <h3 className="text-lg font-semibold mb-2">Do you offer free consultations?</h3>
                 <p className="text-muted-foreground">
                   The Clarity Session (₦50,000) is our entry point. It's a full 90-minute strategic session 
-                  where you receive immediate value and a clear roadmap—not a sales pitch.
+                  where you receive immediate value and a clear roadmap, not a sales pitch.
                 </p>
               </Card>
 

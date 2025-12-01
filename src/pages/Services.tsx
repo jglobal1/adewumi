@@ -113,7 +113,7 @@ const Services = () => {
           <div className="max-w-5xl mx-auto">
             <Card className="p-10 border-2 border-accent animate-fade-in">
               <div className="inline-block px-4 py-2 bg-accent text-accent-foreground text-sm font-semibold rounded-full mb-6">
-                TIER 1 - START HERE
+                TIER 1, START HERE
               </div>
               
               <h2 className="text-4xl md:text-5xl font-bold mb-4">The Clarity Session</h2>
@@ -123,7 +123,7 @@ const Services = () => {
 
               <div className="prose prose-lg max-w-none mb-8">
                 <p className="text-lg">
-                  Most people don't have business or leadership problems—they have clarity problems.
+                  Most people don't have business or leadership problems, they have clarity problems.
                   Before building or scaling anything, you need direction that actually makes sense for you.
                   This session gives you that direction.
                 </p>
@@ -181,7 +181,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-block px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-6">
-              TIER 2 - AFTER YOUR CLARITY SESSION
+              TIER 2, AFTER YOUR CLARITY SESSION
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -281,7 +281,7 @@ const Services = () => {
           </p>
           <Link to="/contact">
             <Button variant="cta" size="xl">
-              Book Your Clarity Session - ₦50,000
+              Book Your Clarity Session, ₦50,000
             </Button>
           </Link>
         </div>

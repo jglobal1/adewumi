@@ -32,7 +32,7 @@ const Testimonials = () => {
     {
       name: "Aruwa Usman",
       role: "Business Development Strategist",
-      company: "NBSDP, Quest Fellow - Queens University",
+      company: "NBSDP, Quest Fellow, Queens University",
       content: "Working with Adewumi honestly changed how I lead and manage my business. Before our sessions, everything felt scattered too many moving parts, too many decisions on my plate. But Adewumi has this calm, precise way of helping you cut through the noise and focus on what actually matters. What I appreciate most is that he blends structure with empathy. He's firm when it's needed, but you always feel supported. Since working with him, my team runs more independently, and I finally have the space to focus on growth instead of micromanaging every detail.",
       highlight: "Changed how I lead and manage my business"
     },

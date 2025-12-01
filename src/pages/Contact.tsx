@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "sonner";
+import { CALENDLY_URL } from "@/lib/constants";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -197,7 +199,7 @@ const Contact = () => {
                       <div>
                         <p className="font-medium">Phone</p>
                         <a href="tel:+2347060535490" className="text-muted-foreground hover:text-accent transition-colors">
-                          +234 706 053 5490
+                          +234 7060535490
                         </a>
                       </div>
                     </div>
@@ -206,8 +208,8 @@ const Contact = () => {
                       <Mail className="h-5 w-5 text-accent mt-1" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <a href="mailto:hello@reworkleadership.com" className="text-muted-foreground hover:text-accent transition-colors break-all">
-                          hello@reworkleadership.com
+                        <a href="mailto:theleadersguide123@gmail.com" className="text-muted-foreground hover:text-accent transition-colors break-all">
+                          theleadersguide123@gmail.com
                         </a>
                       </div>
                     </div>
@@ -255,25 +257,28 @@ const Contact = () => {
                 </Card>
 
                 <Card className="p-6 bg-primary text-primary-foreground">
-                  <h3 className="text-xl font-semibold mb-2">What Happens Next?</h3>
-                  <ol className="space-y-2 text-sm">
-                    <li className="flex gap-2">
-                      <span className="font-bold">1.</span>
-                      <span>We review your inquiry within 24 hours</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="font-bold">2.</span>
-                      <span>Schedule your Clarity Session</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="font-bold">3.</span>
-                      <span>Get a clear roadmap for your business</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="font-bold">4.</span>
-                      <span>Decide if you want to continue with a full program</span>
-                    </li>
-                  </ol>
+                  <h3 className="text-xl font-semibold mb-4">How to Begin!</h3>
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <h4 className="font-bold mb-2">Book your Clarity Session</h4>
+                      <ul className="space-y-1 ml-4">
+                        <li>• Send a DM or message using the contact details below.</li>
+                        <li>• Schedule a date for your session.</li>
+                        <li>• Pay the session fee to confirm your slot.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-bold mb-2">Have your session</h4>
+                      <ul className="space-y-1 ml-4">
+                        <li>• We'll review your current stage, business goals, and challenges.</li>
+                        <li>• You'll walk away with a clear roadmap for your next move.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-bold mb-2">Choose your program</h4>
+                      <p className="ml-4">If you want ongoing support, pick from the Growth & Structure Programs that match your journey.</p>
+                    </div>
+                  </div>
                 </Card>
               </div>
             </div>
@@ -281,37 +286,23 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-muted/30">
+      {/* Ready Section */}
+      <section className="py-20 bg-gradient-hero">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Before You Reach Out</h2>
-            
-            <div className="space-y-6">
-              <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-2">Do you offer free consultations?</h3>
-                <p className="text-muted-foreground">
-                  The Clarity Session (₦50,000) is our entry point. It's a full 90-minute strategic session 
-                  where you receive immediate value and a clear roadmap, not a sales pitch.
-                </p>
-              </Card>
-
-              <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-2">How quickly can we start?</h3>
-                <p className="text-muted-foreground">
-                  Most Clarity Sessions are scheduled within 3-5 business days of inquiry, depending on 
-                  availability. Full programs typically start within 1-2 weeks of decision.
-                </p>
-              </Card>
-
-              <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-2">Do you work internationally?</h3>
-                <p className="text-muted-foreground">
-                  Yes! We work with clients globally via video conferencing. All sessions can be conducted 
-                  virtually, making location no barrier to transformation.
-                </p>
-              </Card>
-            </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready?</h2>
+            <Card className="p-10 bg-white/10 backdrop-blur-sm border-white/20">
+              <p className="text-xl text-white/90 leading-relaxed mb-6">
+                Your clarity session is the first step to everything you've been trying to figure out alone. 
+                Let's help you build what's next and build it right.
+              </p>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="cta" size="xl" className="bg-white text-primary hover:bg-white/90">
+                  Book Your Clarity Session Now
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </Button>
+              </a>
+            </Card>
           </div>
         </div>
       </section>

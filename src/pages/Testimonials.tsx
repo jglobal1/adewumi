@@ -188,11 +188,11 @@ const Testimonials = () => {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join the growing community of leaders who've transformed their businesses with clarity and structure.
           </p>
-          <Link to="/contact">
+          <a href="https://calendly.com/adewumijoshua30" target="_blank" rel="noopener noreferrer">
             <Button variant="cta" size="xl">
               Book Your Clarity Session
             </Button>
-          </Link>
+          </a>
           <p className="text-white/60 mt-4">Start with a 90-minute session for ₦50,000</p>
         </div>
       </section>

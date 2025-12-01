@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { CALENDLY_URL } from "@/lib/constants";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,11 +57,11 @@ export const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
               <Button variant="cta" size="lg">
                 Book Clarity Session
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -96,11 +97,11 @@ export const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="cta" size="lg" className="w-full">
                 Book Clarity Session
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       )}

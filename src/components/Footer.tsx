@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, Linkedin, Twitter, BookOpen } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,6 +51,26 @@ export const Footer = () => {
               <li className="text-sm text-primary-foreground/80">Leadership Development</li>
               <li className="text-sm text-primary-foreground/80">Team Building</li>
               <li className="text-sm text-primary-foreground/80">Systems Design</li>
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h3 className="font-semibold mb-4 flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
+              Products
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <a 
+                  href="https://selar.com/m/adewumi-adeyanju1" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  View All Products on Selar
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand colors - professional navy and vibrant blue */
+    --background: 0 0% 100%;
+    --foreground: 220 39% 11%;
+    
+    /* Navy primary for authority */
+    --primary: 220 39% 11%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 60%;
+    
+    /* Vibrant blue accent from logo */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 217 91% 70%;
+    
+    /* Gold for CTAs - energetic and action-oriented */
+    --cta: 36 100% 50%;
+    --cta-foreground: 220 39% 11%;
+    --cta-hover: 36 100% 45%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 39% 11%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 39% 11%;
+
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+    
+    /* Custom design tokens */
+    --primary-dark: 221 83% 25%;
+    --accent-light: 217 91% 70%;
+    
+    /* Enhanced gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(180, 40%, 25%) 0%, hsl(180, 35%, 30%) 50%, hsl(180, 45%, 20%) 100%);
+    --gradient-teal: linear-gradient(135deg, hsl(180, 40%, 25%) 0%, hsl(180, 35%, 30%) 50%, hsl(180, 45%, 20%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(217, 91%, 70%) 100%);
+    --gradient-gold-glow: linear-gradient(135deg, hsl(36, 100%, 50%) 0%, hsl(45, 100%, 60%) 100%);
+    
+    /* Enhanced shadows */
+    --shadow-sm: 0 2px 8px hsl(220, 39%, 11%, 0.08);
+    --shadow-md: 0 4px 16px hsl(220, 39%, 11%, 0.12);
+    --shadow-lg: 0 8px 32px hsl(220, 39%, 11%, 0.16);
+    --shadow-xl: 0 20px 40px hsl(220, 39%, 11%, 0.2);
+    --shadow-glow: 0 0 40px hsl(217, 91%, 60%, 0.4);
+    --shadow-gold: 0 10px 40px -10px hsl(36, 100%, 50%, 0.5);
+  }
+
+  .dark {
+    --background: 220 39% 11%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 30% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 30% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 39% 11%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 13% 70%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 220 39% 11%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 25%;
+    --input: 220 30% 25%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-gold-glow {
+    background: var(--gradient-gold-glow);
+  }
+  
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}

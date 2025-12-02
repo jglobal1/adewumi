@@ -201,8 +201,9 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="The Leaders' Guide | Business Coaching Nigeria | Rework Business Hub"
-        description="Transform your business with expert coaching in Nigeria. From idea to scale, we build teams, systems & companies that work without you. Book your clarity session today, ₦50,000."
+        title="Rework Business Hub | Business Coaching Nigeria | The Leaders' Guide"
+        description="Rework Business Hub - Transform your business with expert coaching in Nigeria. From idea to scale, we build teams, systems & companies that work without you. Book your clarity session today, ₦50,000."
+        keywords="reworkbusinesshub, rework business hub, business coaching Nigeria, leadership development, team building, business growth consultant, startup business coach, small business systems, business transformation Nigeria, executive coaching, leadership training, business strategy Nigeria"
         url="https://reworkbusinesshub.com/"
         canonical="https://reworkbusinesshub.com/"
       />
@@ -230,7 +231,7 @@ const Index = () => {
                 Clarity. Structure. Growth.
               </p>
               <p className="text-lg text-white/80 max-w-2xl">
-                All we do is simple: help people grow personally, professionally, and in business.
+                <strong>Rework Business Hub</strong> helps people grow personally, professionally, and in business.
                 This page is the exact profile and packages we use with every client.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -288,9 +289,9 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="p-8 border-2">
               <p className="text-sm uppercase tracking-[0.3em] text-accent mb-4">Who We Are</p>
-              <h3 className="text-2xl font-bold mb-4">The Leaders’ Guide</h3>
+              <h3 className="text-2xl font-bold mb-4">Rework Business Hub</h3>
               <p className="text-muted-foreground leading-relaxed">
-                We help people grow: personally, professionally, and in business. Individuals, founders,
+                <strong>Rework Business Hub</strong>, also known as The Leaders' Guide, helps people grow: personally, professionally, and in business. Individuals, founders,
                 and organizations come to us when they want structure, clarity, and results that last.
               </p>
             </Card>

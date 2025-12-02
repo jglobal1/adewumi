@@ -29,7 +29,12 @@ export const SchemaMarkup = ({
       "alternateName": "The Leaders' Guide",
       "description": "Business coaching and leadership development services in Nigeria. Build teams, systems, and companies that scale without you. Expert guidance from idea to launch, solopreneur to company, and company to scale.",
       "url": baseUrl,
-      "logo": `${baseUrl}/logo-full.png`,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo-full.png`,
+        "width": 512,
+        "height": 512
+      },
       "image": `${baseUrl}/og-image.jpg`,
       "sameAs": [
         "http://linkedin.com/in/adewumi-adeyanju",

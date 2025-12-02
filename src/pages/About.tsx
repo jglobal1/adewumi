@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SEO } from "@/components/SEO";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -18,6 +20,18 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="About Us | The Leaders' Guide | Business Coach Nigeria"
+        description="Meet Adewumi Adeyanju, Business Coach & Leadership Strategist. Learn how The Leaders' Guide helps businesses grow through coaching, leadership development, and team building in Nigeria."
+        url="https://reworkbusinesshub.com/about"
+        canonical="https://reworkbusinesshub.com/about"
+      />
+      <SchemaMarkup 
+        pageType="about" 
+        pageTitle="About Us - The Leaders' Guide"
+        pageDescription="Learn about The Leaders' Guide and how we help businesses grow through coaching and leadership development"
+        pageUrl="https://reworkbusinesshub.com/about"
+      />
       <Navigation />
       <WhatsAppButton />
 

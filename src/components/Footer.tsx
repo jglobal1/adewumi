@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, Linkedin, Twitter, BookOpen } from "lucide-react";
+import { Mail, Phone, Linkedin, Facebook, Instagram, BookOpen } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -91,11 +91,32 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="flex gap-3 mt-4">
-                <a href="#" className="hover:text-accent transition-colors" aria-label="LinkedIn">
+                <a 
+                  href="http://linkedin.com/in/adewumi-adeyanju" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors" 
+                  aria-label="LinkedIn"
+                >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="#" className="hover:text-accent transition-colors" aria-label="Twitter">
-                  <Twitter className="h-5 w-5" />
+                <a 
+                  href="https://www.facebook.com/adewumi.joshua.adeyanju" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors" 
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/adewumiadeyanju_?igsh=MW92NjhqNnYxMDI4Yg%3D%3D&utm_source=qr" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors" 
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
                 </a>
               </li>
             </ul>

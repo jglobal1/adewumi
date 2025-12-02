@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SEO } from "@/components/SEO";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -24,6 +26,18 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Clarity Session | Business Coaching Service | ₦50,000"
+        description="Book your 90-minute Clarity Session with The Leaders' Guide. Get clarity on your business goals, identify blockers, and create a customized roadmap. Investment: ₦50,000 ($33)."
+        url="https://reworkbusinesshub.com/services"
+        canonical="https://reworkbusinesshub.com/services"
+      />
+      <SchemaMarkup 
+        pageType="services"
+        pageTitle="The Clarity Session - Business Coaching Service"
+        pageDescription="90-minute strategic consultation to define your next step and create a customized roadmap for your business growth"
+        pageUrl="https://reworkbusinesshub.com/services"
+      />
       <Navigation />
       <WhatsAppButton />
 

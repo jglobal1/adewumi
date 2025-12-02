@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SEO } from "@/components/SEO";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -201,6 +203,18 @@ const Packages = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Growth & Structure Programs | Business Coaching Packages Nigeria"
+        description="Comprehensive business coaching programs: Idea to Execution, Solo to Company, Team Alignment, Team Building, and Scale & Expansion. Custom pricing available. Start with a Clarity Session."
+        url="https://reworkbusinesshub.com/packages"
+        canonical="https://reworkbusinesshub.com/packages"
+      />
+      <SchemaMarkup 
+        pageType="packages"
+        pageTitle="Growth & Structure Programs"
+        pageDescription="Comprehensive coaching programs for business transformation"
+        pageUrl="https://reworkbusinesshub.com/packages"
+      />
       <Navigation />
       <WhatsAppButton />
 
@@ -377,11 +391,9 @@ const Packages = () => {
 
                     <div className="bg-accent/5 rounded-lg p-6">
                       <h3 className="text-xl font-semibold mb-4">Investment</h3>
-                      <div className="space-y-2">
-                        <p className="text-muted-foreground">{pkg.pricing.monthly} – Monthly</p>
-                        <p className="text-muted-foreground">{pkg.pricing.threeMonths} – 3 Months</p>
-                        <p className="text-muted-foreground">{pkg.pricing.sixMonths} – 6 Months</p>
-                      </div>
+                      <p className="text-muted-foreground mb-4">
+                        Custom pricing based on your specific needs, goals, and commitment level. We work with you to create an investment plan that fits your situation.
+                      </p>
                       <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="block mt-4">
                         <Button variant="cta" size="lg" className="w-full">
                           Get Started
@@ -404,8 +416,8 @@ const Packages = () => {
             <Card className="p-10 bg-accent/5">
               <h2 className="text-3xl font-bold mb-4">Next Step!</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Start with a Clarity Session (₦50,000 | $33). After that, we'll choose the right coaching 
-                package for your stage and goals.
+                Start with a Clarity Session. After that, we'll choose the right coaching 
+                package for your stage and goals, with pricing tailored to your specific needs.
               </p>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="cta" size="xl">

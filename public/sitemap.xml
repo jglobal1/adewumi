@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
   <!-- Homepage -->
   <url>
     <loc>https://reworkbusinesshub.com/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://reworkbusinesshub.com/og-image.jpg</image:loc>
+      <image:title>The Leaders' Guide - Business Coaching Nigeria</image:title>
+      <image:caption>Business coaching and leadership development services in Nigeria</image:caption>
+    </image:image>
   </url>
   
   <!-- About Page -->
   <url>
     <loc>https://reworkbusinesshub.com/about</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -23,7 +29,7 @@
   <!-- Services Page -->
   <url>
     <loc>https://reworkbusinesshub.com/services</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -31,7 +37,7 @@
   <!-- Packages Page -->
   <url>
     <loc>https://reworkbusinesshub.com/packages</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -39,7 +45,7 @@
   <!-- Testimonials Page -->
   <url>
     <loc>https://reworkbusinesshub.com/testimonials</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -47,7 +53,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://reworkbusinesshub.com/contact</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

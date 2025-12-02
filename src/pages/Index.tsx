@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SchemaMarkup } from "@/components/SchemaMarkup";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import founderImage from "@/assets/founder.png";
@@ -24,61 +25,6 @@ const Index = () => {
     "Option to continue with one of the Growth & Structure Programs after the session."
   ];
 
-  const priceSummary = [
-    {
-      tier: "Tier 1: Clarity Session",
-      description: "₦50,000 ($33) – One-time session",
-      bullets: [
-        "90-minute 1-on-1 session (virtual or in-person)",
-        "Your first step to direction and action"
-      ]
-    },
-    {
-      tier: "Idea to Execution (3-6 months)",
-      description: "Validate your idea, define your offer, and design structure.",
-      bullets: [
-        "₦250,000 ($167) – Monthly",
-        "₦700,000 ($467) – 3 Months",
-        "₦1,300,000 ($867) – 6 Months"
-      ]
-    },
-    {
-      tier: "Solo to Company (3-6 months)",
-      description: "Move from being the business to building one.",
-      bullets: [
-        "₦250,000 ($167) – Monthly",
-        "₦600,000 ($400) – 3 Months",
-        "₦1,200,000 ($800) – 6 Months"
-      ]
-    },
-    {
-      tier: "Team Alignment (3-6 months)",
-      description: "Realign teams, roles, and accountability.",
-      bullets: [
-        "₦200,000 ($133) – Monthly",
-        "₦600,000 ($400) – 3 Months",
-        "₦1,000,000 ($667) – 6 Months"
-      ]
-    },
-    {
-      tier: "Team Building (3-6 months)",
-      description: "Hire, onboard, and develop the right people.",
-      bullets: [
-        "₦270,000 ($180) – Monthly",
-        "₦800,000 ($533) – 3 Months",
-        "₦1,500,000 ($1,000) – 6 Months"
-      ]
-    },
-    {
-      tier: "Scale & Expansion (3-6+ months)",
-      description: "Replicate success and expand sustainably.",
-      bullets: [
-        "₦335,000 ($223) – Monthly",
-        "₦1,000,000 ($667) – 3 Months",
-        "₦2,000,000 ($1,333) – 6 Months"
-      ]
-    }
-  ];
 
   const howToBeginSteps = [
     "Book your Clarity Session: send a DM or message using the contact details, schedule a date, and confirm payment.",
@@ -117,11 +63,6 @@ const Index = () => {
         "Clarity on your target market and customer approach.",
         "Confidence to operate and grow independently."
       ],
-      pricing: [
-        "₦250,000 ($167) – Monthly",
-        "₦700,000 ($467) – 3 Months",
-        "₦1,300,000 ($867) – 6 Months"
-      ]
     },
     {
       name: "Package 2: Solo to Company",
@@ -155,11 +96,6 @@ const Index = () => {
         "Systems for accountability, performance, and results.",
         "More time to focus on growth instead of survival."
       ],
-      pricing: [
-        "₦250,000 ($167) – Monthly",
-        "₦600,000 ($400) – 3 Months",
-        "₦1,200,000 ($800) – 6 Months"
-      ]
     },
     {
       name: "Package 3: Team Alignment",
@@ -193,11 +129,6 @@ const Index = () => {
         "Communication and collaboration improve.",
         "Execution becomes consistent with stronger accountability."
       ],
-      pricing: [
-        "₦200,000 ($133) – Monthly",
-        "₦600,000 ($400) – 3 Months",
-        "₦1,000,000 ($667) – 6 Months"
-      ]
     },
     {
       name: "Package 4: Team Building",
@@ -231,11 +162,6 @@ const Index = () => {
         "A strong culture that drives collaboration and accountability.",
         "A team you can trust to deliver without constant supervision."
       ],
-      pricing: [
-        "₦270,000 ($180) – Monthly",
-        "₦800,000 ($533) – 3 Months",
-        "₦1,500,000 ($1,000) – 6 Months"
-      ]
     },
     {
       name: "Package 5: Scale & Expansion",
@@ -269,17 +195,18 @@ const Index = () => {
         "A team and structure that sustain growth.",
         "The confidence to scale without losing control."
       ],
-      pricing: [
-        "₦335,000 ($223) – Monthly",
-        "₦1,000,000 ($667) – 3 Months",
-        "₦2,000,000 ($1,333) – 6 Months"
-      ]
     }
   ];
 
   return (
     <div className="min-h-screen">
-      <SchemaMarkup />
+      <SEO
+        title="The Leaders' Guide | Business Coaching Nigeria | Rework Business Hub"
+        description="Transform your business with expert coaching in Nigeria. From idea to scale, we build teams, systems & companies that work without you. Book your clarity session today, ₦50,000."
+        url="https://reworkbusinesshub.com/"
+        canonical="https://reworkbusinesshub.com/"
+      />
+      <SchemaMarkup pageType="home" pageUrl="https://reworkbusinesshub.com/" />
       <Navigation />
       <WhatsAppButton />
 
@@ -512,31 +439,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Price Summary */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-accent text-sm font-semibold tracking-[0.3em] uppercase">Price Summary</span>
-            <h2 className="text-4xl font-bold mt-4">Transparent Investment Options</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {priceSummary.map((item) => (
-              <Card key={item.tier} className="p-6 border-2">
-                <h3 className="text-2xl font-semibold mb-2">{item.tier}</h3>
-                <p className="text-accent font-semibold mb-4">{item.description}</p>
-                <ul className="space-y-2 text-muted-foreground">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Growth & Structure Programs */}
       <section className="py-20 bg-background">
@@ -616,16 +518,14 @@ const Index = () => {
 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Investment</h4>
-                  <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
-                    {program.pricing.map((price) => (
-                      <span
-                        key={price}
-                        className="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold text-accent"
-                      >
-                        {price}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-muted-foreground mb-4">
+                    Custom pricing based on your specific needs and goals. Contact us to discuss investment options that work for your situation.
+                  </p>
+                  <Link to="/contact">
+                    <Button variant="outline" size="sm">
+                      Contact for Pricing
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             ))}

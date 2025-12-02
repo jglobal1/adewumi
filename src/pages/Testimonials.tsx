@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SEO } from "@/components/SEO";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Quote } from "lucide-react";
@@ -54,6 +56,18 @@ const Testimonials = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Client Testimonials | Business Coaching Reviews | The Leaders' Guide"
+        description="Read testimonials from clients who transformed their businesses with The Leaders' Guide. Real stories from entrepreneurs, founders, and leaders in Nigeria who achieved clarity, structure, and growth."
+        url="https://reworkbusinesshub.com/testimonials"
+        canonical="https://reworkbusinesshub.com/testimonials"
+      />
+      <SchemaMarkup 
+        pageType="testimonials"
+        pageTitle="Client Testimonials - The Leaders' Guide"
+        pageDescription="Read testimonials from clients who transformed their businesses with The Leaders' Guide"
+        pageUrl="https://reworkbusinesshub.com/testimonials"
+      />
       <Navigation />
       <WhatsAppButton />
 

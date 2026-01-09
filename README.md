@@ -1,73 +1,86 @@
-# Welcome to your Lovable project
+The Leaders’ Guide is a professional coaching and business growth platform developed for Rework Business Hub. The platform presents structured coaching services, leadership programs, digital products, and engagement flows designed to help individuals, founders, and organizations grow with clarity, structure, and sustainable systems.
 
-## Project info
+The website serves as both a brand profile and a conversion-driven platform for booking coaching sessions, exploring programs, and accessing digital leadership resources.
 
-**URL**: https://lovable.dev/projects/1a78c490-960e-4bf4-a08d-dad582f2b43b
+Business Context
 
-## How can I edit this code?
+Many professionals and founders struggle not because of a lack of effort, but because of:
 
-There are several ways of editing your application.
+Lack of clarity on direction
 
-**Use Lovable**
+Poor structure in execution
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1a78c490-960e-4bf4-a08d-dad582f2b43b) and start prompting.
+Weak systems for growth and leadership
 
-Changes made via Lovable will be committed automatically to this repo.
+Difficulty scaling beyond themselves or small teams
 
-**Use your preferred IDE**
+The Leaders’ Guide addresses these challenges by clearly communicating structured coaching pathways, from early clarity to full business and team scaling.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Platform Objectives
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Clearly communicate coaching philosophy and approach
 
-Follow these steps:
+Present structured service tiers and programs
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Convert visitors into booked clarity sessions
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Showcase leadership and business development offerings
 
-# Step 3: Install the necessary dependencies.
-npm i
+Provide access to digital leadership products
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Build trust through clarity, structure, and professional presentation
 
-**Edit a file directly in GitHub**
+Core Sections & Features
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Brand & Positioning
 
-**Use GitHub Codespaces**
+The platform establishes The Leaders’ Guide as a clarity-first coaching and leadership brand, centered on the progression:
+Clarity → Structure → Growth
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Messaging is designed to speak directly to individuals, founders, and teams seeking long-term, sustainable results rather than short-term motivation.
 
-## What technologies are used for this project?
+Coaching Tiers & Programs
 
-This project is built with:
+The website presents a clearly structured two-tier coaching model:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Tier One – Clarity Session
+A focused 90-minute session designed to help clients identify direction, blockers, and next steps before committing to long-term programs.
 
-## How can I deploy this project?
+Tier Two – Growth & Structure Programs
+In-depth coaching programs tailored to different stages of growth, including:
 
-Simply open [Lovable](https://lovable.dev/projects/1a78c490-960e-4bf4-a08d-dad582f2b43b) and click on Share -> Publish.
+Idea to Execution
 
-## Can I connect a custom domain to my Lovable project?
+Solo to Company
 
-Yes, you can!
+Team Alignment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Team Building
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Scale & Expansion
+
+Each program includes:
+
+Target audience definition
+
+Clear outcomes
+
+Delivery structure
+
+Expected results
+
+Custom investment flow
+
+Conversion-Driven User Flow
+
+The platform is designed to guide users through a clear journey:
+
+Understand the brand and approach
+
+Identify their current stage
+
+Explore the right program
+
+Book a clarity session
+
+Continue into structured growth programs

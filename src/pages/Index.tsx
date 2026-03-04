@@ -241,6 +241,11 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
                   </Button>
                 </a>
+                <a href="/rework-business-scanner.html">
+                  <Button variant="hero" size="xl" className="text-lg px-8 py-6 border-2 border-white/30 bg-white/10 hover:bg-white/20">
+                    Take the Free Business Health Scan
+                  </Button>
+                </a>
                 <Link to="/services">
                   <Button variant="hero" size="xl" className="text-lg px-8 py-6 border-2 border-white/30 bg-white/10 hover:bg-white/20">
                     Explore Programs

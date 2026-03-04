@@ -40,6 +40,11 @@ export const Footer = () => {
                   Testimonials
                 </Link>
               </li>
+              <li>
+                <a href="/rework-business-scanner.html" className="text-sm text-primary-foreground/80 hover:text-accent transition-colors">
+                  Take the Free Business Health Scan
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -57,6 +57,16 @@ export const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="/rework-business-scanner.html"
+              className={`text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "text-foreground hover:text-accent"
+                  : "text-white/80 hover:text-white"
+              }`}
+            >
+              Business Health Scan
+            </a>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
               <Button variant="cta" size="lg">
                 Book Clarity Session
@@ -97,6 +107,13 @@ export const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="/rework-business-scanner.html"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-base font-medium py-2 transition-colors text-foreground hover:text-accent"
+            >
+              Business Health Scan
+            </a>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="cta" size="lg" className="w-full">
                 Book Clarity Session

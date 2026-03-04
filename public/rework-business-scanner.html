@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rework Business Hub - Free Business Health Scanner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #1b6b3a;
+      --green-mid: #228b4a;
+      --green-light: #2ead5e;
+      --green-pale: #e8f5ee;
+      --yellow: #f5c518;
+      --yellow-light: #ffd84d;
+      --yellow-dim: #c9a010;
+      --dark: #0f1f15;
+      --dark-2: #162a1e;
+      --white: #ffffff;
+      --cream: #f9fbf9;
+      --text-muted: #6b8a76;
+      --border: rgba(27, 107, 58, 0.15);
+      --red: #e05252;
+      --orange: #e08c40;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "Nunito", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .top-stripe {
+      height: 5px;
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--green-light));
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--yellow);
+      box-shadow: 0 4px 12px rgba(27, 107, 58, 0.3);
+    }
+    .brand-text .name {
+      font-family: "Syne", sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .brand-text .sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .header-badge {
+      background: var(--green-pale);
+      border: 1px solid rgba(27, 107, 58, 0.2);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero {
+      background: linear-gradient(160deg, var(--green) 0%, var(--dark-2) 100%);
+      padding: 60px 24px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 400px at 80% 20%, rgba(245, 197, 24, 0.12) 0%, transparent 60%),
+        radial-gradient(circle 300px at 10% 80%, rgba(46, 173, 94, 0.15) 0%, transparent 50%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 50px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 197, 24, 0.15);
+      border: 1px solid rgba(245, 197, 24, 0.4);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .progress-wrap { max-width: 500px; margin: 0 auto; }
+    .progress-steps { display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+    .prog-step { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .prog-circle {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      background: transparent;
+      transition: all 0.3s;
+    }
+    .prog-circle.active {
+      border-color: var(--yellow);
+      background: var(--yellow);
+      color: var(--dark);
+      box-shadow: 0 0 0 4px rgba(245, 197, 24, 0.25);
+    }
+    .prog-circle.done {
+      border-color: var(--green-light);
+      background: var(--green-light);
+      color: var(--white);
+    }
+    .prog-line {
+      width: 50px; height: 2px;
+      background: rgba(255, 255, 255, 0.12);
+      transition: background 0.3s;
+    }
+    .prog-line.done { background: var(--green-light); }
+    .prog-label {
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .prog-step.active .prog-label { color: var(--yellow); }
+
+    .main { max-width: 680px; margin: -10px auto 0; padding: 0 20px 80px; }
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(27, 107, 58, 0.08);
+      animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      margin-top: 28px;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card-header {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 28px; padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .step-num {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 3px;
+    }
+    .card-title-wrap h2 {
+      font-family: "Syne", sans-serif;
+      font-size: 22px; font-weight: 800; color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .card-title-wrap p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    .field { margin-bottom: 22px; }
+    label.field-label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      background: var(--cream);
+      border: 1.5px solid rgba(27, 107, 58, 0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--dark);
+      font-family: "Nunito", sans-serif;
+      font-size: 14px;
+      transition: all 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus {
+      border-color: var(--green-light);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(46, 173, 94, 0.12);
+    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .radio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    .r-card {
+      border: 1.5px solid rgba(27, 107, 58, 0.12);
+      border-radius: 12px; padding: 14px 10px; cursor: pointer;
+      transition: all 0.2s; text-align: center; background: var(--cream);
+      user-select: none;
+    }
+    .r-card:hover { border-color: var(--green-light); background: var(--green-pale); }
+    .r-card.selected {
+      border-color: var(--green);
+      background: var(--green-pale);
+      box-shadow: 0 0 0 3px rgba(27, 107, 58, 0.1);
+    }
+    .r-card input { display: none; }
+    .r-card .r-icon { font-size: 22px; margin-bottom: 6px; }
+    .r-card .r-label { font-size: 12px; color: var(--text-muted); font-weight: 600; line-height: 1.3; }
+    .r-card.selected .r-label { color: var(--green); }
+
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .c-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; background: var(--cream);
+      border: 1.5px solid rgba(27, 107, 58, 0.1);
+      border-radius: 10px; cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .c-item.checked { border-color: var(--green); background: var(--green-pale); }
+    .c-item input { display: none; }
+    .c-box {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(27, 107, 58, 0.25);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px; color: transparent;
+      font-weight: 700;
+    }
+    .c-item.checked .c-box { background: var(--green); border-color: var(--green); color: var(--white); }
+    .c-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .c-item.checked .c-label { color: var(--green); }
+
+    .slider-val {
+      text-align: center;
+      font-family: "Syne", sans-serif;
+      font-size: 32px; font-weight: 800;
+      color: var(--green); margin-bottom: 10px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%; height: 6px;
+      background: rgba(27, 107, 58, 0.1);
+      border-radius: 3px; outline: none; border: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      background: var(--green); border-radius: 50%; cursor: pointer;
+    }
+    .slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+
+    .btn-row {
+      display: flex; gap: 12px; justify-content: flex-end;
+      margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border);
+    }
+    .btn-back {
+      padding: 12px 22px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-family: "Nunito", sans-serif;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-next {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      border: none; border-radius: 10px; color: var(--white);
+      font-family: "Nunito", sans-serif;
+      font-size: 14px; font-weight: 800; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(27, 107, 58, 0.3);
+    }
+    .loading-wrap { text-align: center; padding: 50px 20px; }
+    .spinner {
+      width: 56px; height: 56px;
+      border: 4px solid var(--green-pale);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.85s linear infinite;
+      margin: 0 auto 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-title {
+      font-family: "Syne", sans-serif;
+      font-size: 22px; font-weight: 800; color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .loading-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .load-step {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px; background: var(--cream);
+      border-radius: 10px; margin-bottom: 8px;
+      font-size: 13px; color: var(--text-muted); font-weight: 600;
+      opacity: 0; animation: fadeIn 0.4s ease forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .results-hero {
+      text-align: center;
+      padding: 36px 20px 28px;
+      background: linear-gradient(160deg, var(--green) 0%, var(--dark-2) 100%);
+      border-radius: 16px;
+      margin-bottom: 24px;
+      position: relative; overflow: hidden;
+    }
+    .results-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle 300px at 80% 20%, rgba(245, 197, 24, 0.12) 0%, transparent 60%);
+    }
+    .results-hero-inner { position: relative; z-index: 1; }
+    .score-label-top {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5); font-weight: 700; margin-bottom: 16px;
+    }
+    .score-donut { width: 150px; height: 150px; position: relative; margin: 0 auto 18px; }
+    .score-donut svg { transform: rotate(-90deg); }
+    .score-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .score-big {
+      font-family: "Syne", sans-serif;
+      font-size: 46px; font-weight: 800; line-height: 1; color: var(--yellow);
+    }
+    .score-100 { font-size: 14px; color: rgba(255, 255, 255, 0.4); font-weight: 600; }
+    .score-grade-txt {
+      font-family: "Syne", sans-serif;
+      font-size: 20px; font-weight: 800;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .score-verdict-txt { font-size: 13px; color: rgba(255, 255, 255, 0.65); line-height: 1.6; max-width: 380px; margin: 0 auto; }
+
+    .section-title {
+      font-family: "Syne", sans-serif;
+      font-size: 17px; font-weight: 800;
+      color: var(--dark); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .pillar-row {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+    }
+    .pillar-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .pillar-name-txt { font-size: 13px; font-weight: 700; color: var(--dark); }
+    .pillar-score-txt { font-size: 13px; font-weight: 800; }
+    .pillar-track { height: 8px; background: var(--green-pale); border-radius: 4px; overflow: hidden; }
+    .pillar-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .insight-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 14px;
+      border-left: 4px solid transparent;
+      animation: slideUp 0.4s ease forwards;
+    }
+    .insight-item.danger { border-left-color: var(--red); }
+    .insight-item.warning { border-left-color: var(--orange); }
+    .insight-item.success { border-left-color: var(--green-light); }
+    .insight-item.info { border-left-color: var(--yellow-dim); }
+    .ins-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .ins-title { font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .ins-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+      border-radius: 18px; padding: 32px; text-align: center; margin-top: 20px;
+      position: relative; overflow: hidden;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-card h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 10px;
+    }
+    .cta-card p { font-size: 14px; color: rgba(255, 255, 255, 0.75); line-height: 1.65; margin-bottom: 24px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-wa {
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 26px;
+      background: var(--yellow);
+      border: none; border-radius: 10px;
+      color: var(--dark);
+      font-family: "Nunito", sans-serif;
+      font-size: 14px; font-weight: 800;
+      text-decoration: none;
+    }
+    .btn-learn {
+      padding: 14px 26px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: "Nunito", sans-serif;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer;
+    }
+    .restart-btn {
+      display: block; margin: 20px auto 0; background: none; border: none;
+      color: var(--text-muted); font-size: 13px; text-decoration: underline; cursor: pointer;
+    }
+    footer {
+      text-align: center; padding: 24px;
+      font-size: 12px; color: var(--text-muted);
+      border-top: 1px solid var(--border); margin-top: 40px;
+    }
+    footer span { color: var(--green); font-weight: 700; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 560px) {
+      .two-col, .check-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .card { padding: 24px 18px; }
+      header { padding: 14px 16px; }
+      .hero { padding: 40px 16px 60px; }
+      .prog-line { width: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-stripe"></div>
+
+  <header>
+    <div class="brand">
+      <div class="brand-logo">R</div>
+      <div class="brand-text">
+        <div class="name">Rework Business Hub</div>
+        <div class="sub">Business Growth Platform</div>
+      </div>
+    </div>
+    <div class="header-badge">Free Tool</div>
+  </header>
+
+  <div class="hero" id="heroSection">
+    <div class="hero-inner">
+      <div class="hero-badge">Business Health Scanner</div>
+      <h1>Is Your Business<br /><span>Built to Grow?</span></h1>
+      <p>Answer 5 quick sections. Get your personalised Business Health Score with expert insights - completely free from Rework Business Hub.</p>
+
+      <div class="progress-wrap">
+        <div class="progress-steps" id="progressSteps">
+          <div class="prog-step active" id="ps0"><div class="prog-circle active" id="pc0">1</div><div class="prog-label">Basics</div></div>
+          <div class="prog-line" id="pl0"></div>
+          <div class="prog-step" id="ps1"><div class="prog-circle" id="pc1">2</div><div class="prog-label">Finance</div></div>
+          <div class="prog-line" id="pl1"></div>
+          <div class="prog-step" id="ps2"><div class="prog-circle" id="pc2">3</div><div class="prog-label">Marketing</div></div>
+          <div class="prog-line" id="pl2"></div>
+          <div class="prog-step" id="ps3"><div class="prog-circle" id="pc3">4</div><div class="prog-label">Operations</div></div>
+          <div class="prog-line" id="pl3"></div>
+          <div class="prog-step" id="ps4"><div class="prog-circle" id="pc4">5</div><div class="prog-label">Growth</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="card" id="step1">
+      <div class="card-header">
+        <div class="card-icon">🏢</div>
+        <div class="card-title-wrap">
+          <div class="step-num">Section 1 of 5</div>
+          <h2>Business Basics</h2>
+          <p>Let's start with who you are and what you do.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Your Full Name</label>
+        <input type="text" id="userName" placeholder="e.g. Emeka Johnson" />
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label class="field-label">Business Name</label>
+          <input type="text" id="bizName" placeholder="e.g. JayTech Solutions" />
+        </div>
+        <div class="field">
+          <label class="field-label">Years in Business</label>
+          <select id="bizAge">
+            <option value="">Select...</option>
+            <option value="0">Less than 1 year</option>
+            <option value="1">1 - 2 years</option>
+            <option value="2">3 - 5 years</option>
+            <option value="3">6 - 10 years</option>
+            <option value="4">10+ years</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">What industry are you in?</label>
+        <div class="radio-grid">
+          <label class="r-card" onclick="pick('industry','retail',this)"><input type="radio" name="industry" value="retail"><div class="r-icon">🛒</div><div class="r-label">Retail / Trade</div></label>
+          <label class="r-card" onclick="pick('industry','services',this)"><input type="radio" name="industry" value="services"><div class="r-icon">💼</div><div class="r-label">Services / Consulting</div></label>
+          <label class="r-card" onclick="pick('industry','food',this)"><input type="radio" name="industry" value="food"><div class="r-icon">🍽</div><div class="r-label">Food & Hospitality</div></label>
+          <label class="r-card" onclick="pick('industry','tech',this)"><input type="radio" name="industry" value="tech"><div class="r-icon">💻</div><div class="r-label">Technology</div></label>
+          <label class="r-card" onclick="pick('industry','manufacturing',this)"><input type="radio" name="industry" value="manufacturing"><div class="r-icon">🏭</div><div class="r-label">Manufacturing</div></label>
+          <label class="r-card" onclick="pick('industry','other',this)"><input type="radio" name="industry" value="other"><div class="r-icon">🔹</div><div class="r-label">Other</div></label>
+        </div>
+      </div>
+      <div class="btn-row"><button class="btn-next" onclick="go(2)">Continue -></button></div>
+    </div>
+
+    <div class="card hidden" id="step2">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title-wrap">
+          <div class="step-num">Section 2 of 5</div>
+          <h2>Revenue & Finance</h2>
+          <p>Your financial pulse - no judgment, just clarity.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Monthly Revenue Range (NGN)</label>
+        <select id="revenue">
+          <option value="">Select range...</option>
+          <option value="1">Below 100,000</option>
+          <option value="2">100k - 500k</option>
+          <option value="3">500k - 2 Million</option>
+          <option value="4">2M - 10 Million</option>
+          <option value="5">Above 10 Million</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label">Roughly what % profit do you keep after costs?</label>
+        <div class="slider-val" id="marginVal">20%</div>
+        <input type="range" id="margin" min="0" max="80" value="20" oninput="document.getElementById('marginVal').textContent=this.value+'%'">
+        <div class="slider-labels"><span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%+</span></div>
+      </div>
+      <div class="field">
+        <label class="field-label">Do you track your income & expenses regularly?</label>
+        <div class="radio-grid" style="grid-template-columns:repeat(3,1fr)">
+          <label class="r-card" onclick="pick('finTrack','never',this)"><input type="radio" name="finTrack" value="never"><div class="r-icon">😬</div><div class="r-label">Not really</div></label>
+          <label class="r-card" onclick="pick('finTrack','sometimes',this)"><input type="radio" name="finTrack" value="sometimes"><div class="r-icon">📒</div><div class="r-label">Sometimes</div></label>
+          <label class="r-card" onclick="pick('finTrack','always',this)"><input type="radio" name="finTrack" value="always"><div class="r-icon">📊</div><div class="r-label">Consistently</div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">How many months of cash reserve do you have?</label>
+        <select id="cashReserve">
+          <option value="">Select...</option>
+          <option value="1">None - I run on fumes</option>
+          <option value="2">Less than 1 month</option>
+          <option value="3">1 - 3 months</option>
+          <option value="4">3 - 6 months</option>
+          <option value="5">6+ months</option>
+        </select>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="go(1)">&larr; Back</button>
+        <button class="btn-next" onclick="go(3)">Continue -></button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="step3">
+      <div class="card-header">
+        <div class="card-icon">📣</div>
+        <div class="card-title-wrap">
+          <div class="step-num">Section 3 of 5</div>
+          <h2>Marketing & Sales</h2>
+          <p>Where customers come from - and how well you convert them.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Where do most of your customers come from? (Select all that apply)</label>
+        <div class="check-grid">
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="referral"><div class="c-box">✓</div><div class="c-label">Word of Mouth / Referrals</div></label>
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="social"><div class="c-box">✓</div><div class="c-label">Social Media</div></label>
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="ads"><div class="c-box">✓</div><div class="c-label">Paid Ads</div></label>
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="walk"><div class="c-box">✓</div><div class="c-label">Walk-ins / Location</div></label>
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="online"><div class="c-box">✓</div><div class="c-label">Website / Online Store</div></label>
+          <label class="c-item" onclick="tog(this)"><input type="checkbox" value="none"><div class="c-box">✓</div><div class="c-label">No clear strategy</div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">How often do you follow up with existing customers?</label>
+        <div class="radio-grid" style="grid-template-columns:repeat(3,1fr)">
+          <label class="r-card" onclick="pick('followUp','never',this)"><input type="radio" name="followUp" value="never"><div class="r-icon">🙈</div><div class="r-label">Rarely / Never</div></label>
+          <label class="r-card" onclick="pick('followUp','sometimes',this)"><input type="radio" name="followUp" value="sometimes"><div class="r-icon">📱</div><div class="r-label">Sometimes</div></label>
+          <label class="r-card" onclick="pick('followUp','system',this)"><input type="radio" name="followUp" value="system"><div class="r-icon">🔁</div><div class="r-label">I have a system</div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Rate your current sales process (1 = chaotic, 10 = excellent)</label>
+        <div class="slider-val" id="salesVal">5</div>
+        <input type="range" id="salesProcess" min="1" max="10" value="5" oninput="document.getElementById('salesVal').textContent=this.value">
+        <div class="slider-labels"><span>1 - Chaotic</span><span>5 - Average</span><span>10 - Excellent</span></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="go(2)">&larr; Back</button>
+        <button class="btn-next" onclick="go(4)">Continue -></button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="step4">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title-wrap">
+          <div class="step-num">Section 4 of 5</div>
+          <h2>Operations & Team</h2>
+          <p>The engine behind your business - systems, people, and structure.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">How dependent is your business on YOU personally?</label>
+        <div class="radio-grid">
+          <label class="r-card" onclick="pick('depend','total',this)"><input type="radio" name="depend" value="total"><div class="r-icon">😰</div><div class="r-label">Stops if I stop</div></label>
+          <label class="r-card" onclick="pick('depend','high',this)"><input type="radio" name="depend" value="high"><div class="r-icon">😤</div><div class="r-label">Very dependent on me</div></label>
+          <label class="r-card" onclick="pick('depend','medium',this)"><input type="radio" name="depend" value="medium"><div class="r-icon">🙂</div><div class="r-label">Some systems in place</div></label>
+          <label class="r-card" onclick="pick('depend','low',this)"><input type="radio" name="depend" value="low"><div class="r-icon">💪</div><div class="r-label">Runs without me often</div></label>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label class="field-label">Team size (including you)</label>
+          <select id="teamSize">
+            <option value="">Select...</option>
+            <option value="1">Just me</option>
+            <option value="2">2 - 5 people</option>
+            <option value="3">6 - 15 people</option>
+            <option value="4">16 - 50 people</option>
+            <option value="5">50+ people</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Documented processes / SOPs?</label>
+          <select id="sop">
+            <option value="">Select...</option>
+            <option value="none">None at all</option>
+            <option value="some">A few key areas</option>
+            <option value="full">Well documented</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="go(3)">&larr; Back</button>
+        <button class="btn-next" onclick="go(5)">Continue -></button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="step5">
+      <div class="card-header">
+        <div class="card-icon">🚀</div>
+        <div class="card-title-wrap">
+          <div class="step-num">Section 5 of 5</div>
+          <h2>Growth & Strategy</h2>
+          <p>The thinking behind where your business is going.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Do you have a clear 12-month growth plan?</label>
+        <div class="radio-grid" style="grid-template-columns:repeat(3,1fr)">
+          <label class="r-card" onclick="pick('plan','none',this)"><input type="radio" name="plan" value="none"><div class="r-icon">🌫</div><div class="r-label">No plan</div></label>
+          <label class="r-card" onclick="pick('plan','vague',this)"><input type="radio" name="plan" value="vague"><div class="r-icon">💭</div><div class="r-label">It's in my head</div></label>
+          <label class="r-card" onclick="pick('plan','written',this)"><input type="radio" name="plan" value="written"><div class="r-icon">📌</div><div class="r-label">Written & reviewed</div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">What is your biggest business challenge right now?</label>
+        <div class="radio-grid">
+          <label class="r-card" onclick="pick('challenge','customers',this)"><input type="radio" name="challenge" value="customers"><div class="r-icon">👥</div><div class="r-label">Getting customers</div></label>
+          <label class="r-card" onclick="pick('challenge','cashflow',this)"><input type="radio" name="challenge" value="cashflow"><div class="r-icon">💸</div><div class="r-label">Cash flow</div></label>
+          <label class="r-card" onclick="pick('challenge','team',this)"><input type="radio" name="challenge" value="team"><div class="r-icon">🤝</div><div class="r-label">Building a team</div></label>
+          <label class="r-card" onclick="pick('challenge','systems',this)"><input type="radio" name="challenge" value="systems"><div class="r-icon">⚙️</div><div class="r-label">Systems & Structure</div></label>
+          <label class="r-card" onclick="pick('challenge','pricing',this)"><input type="radio" name="challenge" value="pricing"><div class="r-icon">🏷</div><div class="r-label">Pricing & Profit</div></label>
+          <label class="r-card" onclick="pick('challenge','clarity',this)"><input type="radio" name="challenge" value="clarity"><div class="r-icon">🔭</div><div class="r-label">Direction & Clarity</div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Are you currently investing in business coaching or education?</label>
+        <div class="radio-grid" style="grid-template-columns:repeat(3,1fr)">
+          <label class="r-card" onclick="pick('coaching','no',this)"><input type="radio" name="coaching" value="no"><div class="r-icon">❌</div><div class="r-label">Not at the moment</div></label>
+          <label class="r-card" onclick="pick('coaching','sometimes',this)"><input type="radio" name="coaching" value="sometimes"><div class="r-icon">📚</div><div class="r-label">Books / Free content</div></label>
+          <label class="r-card" onclick="pick('coaching','yes',this)"><input type="radio" name="coaching" value="yes"><div class="r-icon">🎯</div><div class="r-label">Active coaching</div></label>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="go(4)">&larr; Back</button>
+        <button class="btn-next" onclick="analyze()">Get My Results -></button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="loadCard">
+      <div class="loading-wrap">
+        <div class="spinner"></div>
+        <div class="loading-title">Analysing Your Business...</div>
+        <div class="loading-sub">Building your personalised Health Report</div>
+        <div id="loadSteps"></div>
+      </div>
+    </div>
+
+    <div class="hidden" id="resultsWrap">
+      <div class="results-hero">
+        <div class="results-hero-inner">
+          <div class="score-label-top">Your Business Health Score</div>
+          <div class="score-donut">
+            <svg width="150" height="150" viewBox="0 0 150 150">
+              <circle cx="75" cy="75" r="62" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="13"></circle>
+              <circle id="scoreArc" cx="75" cy="75" r="62" fill="none" stroke="#F5C518" stroke-width="13" stroke-dasharray="390" stroke-dashoffset="390" stroke-linecap="round" style="transition: stroke-dashoffset 1.6s cubic-bezier(0.16,1,0.3,1)"></circle>
+            </svg>
+            <div class="score-center"><div class="score-big" id="scoreBig">0</div><div class="score-100">/100</div></div>
+          </div>
+          <div class="score-grade-txt" id="gradeText">-</div>
+          <div class="score-verdict-txt" id="verdictText">-</div>
+        </div>
+      </div>
+
+      <div class="pillars-section">
+        <div class="section-title">Area Breakdown</div>
+        <div id="pillarsEl"></div>
+      </div>
+
+      <div class="section-title">Personalised Insights for <span id="bizLabel" style="color:var(--green)">Your Business</span></div>
+      <div id="insightsEl"></div>
+
+      <div class="cta-card">
+        <div class="cta-inner">
+          <h3>Ready to Take Action?</h3>
+          <p id="ctaP">Your results show clear growth opportunities. Let's build a custom strategy for your business together.</p>
+          <div class="cta-btns">
+            <a class="btn-wa" id="waBtn" href="https://wa.me/2347060535490?text=Hi%20Joshua!%20I%20just%20took%20the%20Rework%20Business%20Hub%20Health%20Scan%20and%20I'd%20love%20to%20discuss%20my%20results." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            <button class="btn-learn" onclick="window.open('https://reworkbusinesshub.com','_blank')">Visit Our Website</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="restart-btn" onclick="location.reload()">Retake the Scan</button>
+    </div>
+  </div>
+
+  <footer>
+    Built with love by <span>Rework Business Hub</span> - reworkbusinesshub.com - WhatsApp: 07060535490
+  </footer>
+
+  <script>
+    let step = 1;
+    const d = {};
+
+    function go(n) {
+      document.getElementById("step" + step).classList.add("hidden");
+      step = n;
+      const el = document.getElementById("step" + n);
+      el.classList.remove("hidden");
+      el.style.animation = "none";
+      requestAnimationFrame(() => { el.style.animation = "slideUp 0.45s cubic-bezier(0.16,1,0.3,1) forwards"; });
+      updateProgress(n);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function updateProgress(n) {
+      for (let i = 0; i < 5; i++) {
+        const circle = document.getElementById("pc" + i);
+        const stepEl = document.getElementById("ps" + i);
+        const line = document.getElementById("pl" + i);
+        if (i < n - 1) {
+          circle.className = "prog-circle done";
+          circle.textContent = "✓";
+          stepEl.className = "prog-step done";
+          if (line) line.className = "prog-line done";
+        } else if (i === n - 1) {
+          circle.className = "prog-circle active";
+          circle.textContent = i + 1;
+          stepEl.className = "prog-step active";
+        } else {
+          circle.className = "prog-circle";
+          circle.textContent = i + 1;
+          stepEl.className = "prog-step";
+        }
+      }
+    }
+
+    function pick(name, val, el) {
+      document.querySelectorAll(`[onclick*="pick('${name}'"]`).forEach((c) => c.classList.remove("selected"));
+      el.classList.add("selected");
+      d[name] = val;
+    }
+
+    function tog(el) { el.classList.toggle("checked"); }
+
+    function analyze() {
+      d.userName = document.getElementById("userName").value || "Entrepreneur";
+      d.bizName = document.getElementById("bizName").value || "Your Business";
+      d.bizAge = parseInt(document.getElementById("bizAge").value) || 1;
+      d.revenue = parseInt(document.getElementById("revenue").value) || 2;
+      d.margin = parseInt(document.getElementById("margin").value);
+      d.cashReserve = parseInt(document.getElementById("cashReserve").value) || 2;
+      d.salesProcess = parseInt(document.getElementById("salesProcess").value);
+      d.teamSize = parseInt(document.getElementById("teamSize").value) || 1;
+      d.sopVal = document.getElementById("sop").value || "none";
+      d.finTrack = d.finTrack || "sometimes";
+      d.followUp = d.followUp || "sometimes";
+      d.depend = d.depend || "high";
+      d.plan = d.plan || "vague";
+      d.challenge = d.challenge || "customers";
+      d.coaching = d.coaching || "no";
+
+      document.getElementById("step5").classList.add("hidden");
+      document.getElementById("loadCard").classList.remove("hidden");
+
+      const steps = [
+        { icon: "💰", text: "Analysing revenue & financial health..." },
+        { icon: "📣", text: "Evaluating marketing & sales systems..." },
+        { icon: "⚙️", text: "Reviewing operations & team structure..." },
+        { icon: "🚀", text: "Measuring growth strategy & mindset..." },
+        { icon: "✅", text: "Generating your personalised insights..." }
+      ];
+
+      const container = document.getElementById("loadSteps");
+      steps.forEach((s, i) => {
+        setTimeout(() => {
+          const el = document.createElement("div");
+          el.className = "load-step";
+          el.innerHTML = `<span>${s.icon}</span><span>${s.text}</span>`;
+          container.appendChild(el);
+        }, i * 650);
+      });
+
+      setTimeout(showResults, 4000);
+    }
+
+    function finScore() {
+      let s = 0;
+      s += Math.min(d.revenue * 14, 40);
+      s += Math.min(d.margin / 2, 20);
+      if (d.finTrack === "always") s += 20; else if (d.finTrack === "sometimes") s += 10;
+      if (d.cashReserve >= 3) s += 20; else if (d.cashReserve === 2) s += 8;
+      return Math.min(Math.round(s), 100);
+    }
+
+    function mktScore() {
+      let s = 0;
+      const checked = document.querySelectorAll("#step3 .c-item.checked");
+      const hasNone = [...checked].some((c) => c.querySelector("input").value === "none");
+      if (!hasNone) s += Math.min(checked.length * 12, 40);
+      if (d.followUp === "system") s += 35; else if (d.followUp === "sometimes") s += 18;
+      s += (d.salesProcess || 5) * 2.5;
+      return Math.min(Math.round(s), 100);
+    }
+
+    function opsScore() {
+      let s = 0;
+      const depMap = { total: 5, high: 18, medium: 50, low: 78 };
+      s += depMap[d.depend] || 18;
+      if (d.sopVal === "full") s += 32; else if (d.sopVal === "some") s += 16;
+      s += Math.min((d.teamSize - 1) * 5, 15) + 5;
+      return Math.min(Math.round(s), 100);
+    }
+
+    function growScore() {
+      let s = 28;
+      if (d.plan === "written") s += 35; else if (d.plan === "vague") s += 14;
+      if (d.coaching === "yes") s += 25; else if (d.coaching === "sometimes") s += 12;
+      s += Math.min(d.bizAge * 5, 20);
+      return Math.min(Math.round(s), 100);
+    }
+
+    function getInsights() {
+      const ins = [];
+      if (d.margin < 15) ins.push({ type: "danger", icon: "⚠️", title: "Low Profit Margin Alert", text: `A ${d.margin}% margin is a warning sign. You may be undercharging or overspending. Review your pricing immediately.` });
+      else if (d.margin >= 35) ins.push({ type: "success", icon: "✅", title: "Strong Profit Margin", text: `A ${d.margin}% margin is excellent. Focus now on protecting it as you scale.` });
+      if (d.cashReserve <= 2) ins.push({ type: "danger", icon: "🔥", title: "Cash Reserve is a Risk", text: "Without at least 3 months of cash reserves, one bad month can put you under pressure. Build this buffer quickly." });
+      if (d.finTrack === "never") ins.push({ type: "warning", icon: "📊", title: "You're Flying Blind", text: "Start tracking your numbers weekly so your decisions are based on data, not guesses." });
+      if (d.followUp === "never") ins.push({ type: "warning", icon: "💔", title: "Revenue is Leaking", text: "No follow-up system means missed repeat sales. Build a simple follow-up routine this week." });
+      if (d.depend === "total") ins.push({ type: "danger", icon: "⛓", title: "You Are the Bottleneck", text: "The business depends too much on you. Systems and delegation are now essential." });
+      if (d.sopVal === "none") ins.push({ type: "warning", icon: "📋", title: "No Systems Means No Scale", text: "Document 3 core SOPs to improve consistency and delegation." });
+      if (d.plan === "none") ins.push({ type: "warning", icon: "🗺", title: "No Growth Roadmap", text: "Write your next 90-day plan with one revenue target and one system improvement." });
+      if (d.coaching === "no") ins.push({ type: "info", icon: "🎓", title: "Leverage Expert Support", text: "Structured coaching can shorten your trial-and-error cycle and accelerate growth." });
+      if (ins.length < 2) ins.push({ type: "success", icon: "🚀", title: "Solid Business Foundation", text: "Your business shows real strength. Focus on multiplying what already works." });
+      return ins.slice(0, 5);
+    }
+
+    function showResults() {
+      document.getElementById("loadCard").classList.add("hidden");
+      document.getElementById("resultsWrap").classList.remove("hidden");
+
+      const fs = finScore(), ms = mktScore(), os = opsScore(), gs = growScore();
+      const total = Math.round((fs + ms + os + gs) / 4);
+
+      let n = 0;
+      const iv = setInterval(() => {
+        if (n >= total) { clearInterval(iv); return; }
+        n = Math.min(n + 2, total);
+        document.getElementById("scoreBig").textContent = n;
+      }, 18);
+
+      setTimeout(() => {
+        document.getElementById("scoreArc").style.strokeDashoffset = 390 - (390 * total / 100);
+      }, 200);
+
+      let grade, verdict;
+      if (total >= 80) { grade = "High Performer"; verdict = "Your business is in strong shape with real infrastructure behind it."; }
+      else if (total >= 60) { grade = "Growing Business"; verdict = "Good foundations with clear opportunities ahead."; }
+      else if (total >= 40) { grade = "Work in Progress"; verdict = "Your business has potential but critical gaps are slowing growth."; }
+      else { grade = "Needs Urgent Attention"; verdict = "Your business faces risk in multiple areas, but these are fixable with the right plan."; }
+
+      document.getElementById("gradeText").textContent = grade;
+      document.getElementById("verdictText").textContent = verdict;
+      document.getElementById("bizLabel").textContent = d.bizName;
+
+      const pillars = [
+        { name: "Finance & Revenue", score: fs },
+        { name: "Marketing & Sales", score: ms },
+        { name: "Operations & Team", score: os },
+        { name: "Growth & Strategy", score: gs }
+      ];
+
+      const pel = document.getElementById("pillarsEl");
+      pillars.forEach((p) => {
+        const c = p.score >= 70 ? "var(--green-light)" : p.score >= 45 ? "var(--yellow-dim)" : "var(--red)";
+        pel.innerHTML += `<div class="pillar-row">
+          <div class="pillar-top">
+            <div class="pillar-name-txt">${p.name}</div>
+            <div class="pillar-score-txt" style="color:${c}">${p.score}/100</div>
+          </div>
+          <div class="pillar-track"><div class="pillar-fill" style="background:${c}" data-w="${p.score}%"></div></div>
+        </div>`;
+      });
+
+      setTimeout(() => {
+        document.querySelectorAll(".pillar-fill").forEach((el) => { el.style.width = el.getAttribute("data-w"); });
+      }, 300);
+
+      const insights = getInsights();
+      const iel = document.getElementById("insightsEl");
+      insights.forEach((ins, i) => {
+        const div = document.createElement("div");
+        div.className = `insight-item ${ins.type}`;
+        div.style.animationDelay = `${i * 0.1}s`;
+        div.innerHTML = `<div class="ins-icon">${ins.icon}</div><div><div class="ins-title">${ins.title}</div><div class="ins-text">${ins.text}</div></div>`;
+        iel.appendChild(div);
+      });
+
+      const lowest = pillars.sort((a, b) => a.score - b.score)[0];
+      if (total < 50) {
+        document.getElementById("ctaP").textContent = `${d.userName}, your scan reveals urgent gaps - especially in ${lowest.name}. Reach out to Rework Business Hub and let's build your turnaround plan.`;
+      } else {
+        document.getElementById("ctaP").textContent = `${d.userName}, you've built real momentum with ${d.bizName}. Let's map out your next growth phase together.`;
+      }
+
+      document.getElementById("waBtn").href = `https://wa.me/2347060535490?text=Hi%20Joshua!%20I%20just%20completed%20the%20Rework%20Business%20Hub%20Health%20Scan.%20My%20business%20is%20*${encodeURIComponent(d.bizName)}*%20and%20I%20scored%20*${total}%2F100*.%20I%27d%20love%20to%20discuss%20my%20results!`;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
